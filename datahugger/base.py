@@ -91,10 +91,14 @@ class DatasetDownloader:
             return self._get_attr_attr(record, self.ATTR_FILE_LINK_JSONPATH)
 
     def _get_attr_name(self, record):
-        if not hasattr(self, "ATTR_NAME_JSONPATH"):
-            return None
-
-        return self._get_attr_attr(record, self.ATTR_NAME_JSONPATH)
+        # if the name is defined, get the name
+        if hasattr(self, "ATTR_NAME_JSONPATH"):
+            return self._get_attr_attr(record, self.ATTR_NAME_JSONPATH)
+        # if not, try to get the name from the link
+        elif self._get_attr_link(record):
+            url = self._get_attr_link(record)
+            return url.split("/")[-1]
+        return None
 
     def _get_attr_size(self, record):
         if not hasattr(self, "ATTR_SIZE_JSONPATH"):

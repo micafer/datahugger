@@ -402,9 +402,14 @@ class DataEuropaDataset(DatasetDownloader):
     META_FILES_JSONPATH = '$.@graph[?(@.@type == "dcat:Distribution")]'
 
     # paths to file attributes
-    ATTR_FILE_LINK_JSONPATH = "'dcat:accessURL'.@id"
-    ATTR_NAME_JSONPATH = "'dct:title'"
     ATTR_SIZE_JSONPATH = "'dcat:byteSize'.@value"
+    ATTR_FILE_LINK_JSONPATH = "'dcat:downloadURL'.@id"
+
+    def _get_attr_link(self, record, **kwargs):
+        if self._get_attr_attr(record, "'dcat:downloadURL'.@id"):
+            return self._get_attr_attr(record, "'dcat:downloadURL'.@id")
+        else:
+            return self._get_attr_attr(record, "'dcat:accessURL'.@id")
 
 
 class SeaNoeDataset(DatasetDownloader):
