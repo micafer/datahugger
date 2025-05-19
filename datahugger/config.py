@@ -1,7 +1,6 @@
 from datahugger.services import ArXivDataset
 from datahugger.services import B2shareDataset
 from datahugger.services import DataDryadDataset
-from datahugger.services import DataEuropaDataset
 from datahugger.services import DataOneDataset
 from datahugger.services import DataverseDataset
 from datahugger.services import DjehutyDataset
@@ -121,8 +120,7 @@ SERVICES_NETLOC = {
     "www.sodha.be": DataverseDataset,
     "www.uni-hildesheim.de": DataverseDataset,
     "b2share.eudat.eu": B2shareDataset,
-    "data.europa.eu": DataEuropaDataset,
-    "public-doi.desy.de": DESYDataset,
+    "public-doi.desy.de": DESYDataset
 }
 
 # regexp lookup
