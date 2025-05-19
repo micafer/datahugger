@@ -36,7 +36,7 @@ class ArXivDataset(DatasetDownloader):
 class DataverseDataset(DatasetDownloader):
     """Downloader for Dataverse repository."""
 
-    REGEXP_ID = r"(?P<type>dataset|file)\.xhtml\?persistentId=(?P<record_id>.*)"
+    REGEXP_ID = r"(?P<type>dataset|file|citation)(\.xhtml)?\?persistentId=(?P<record_id>.*)"
 
     # paths to file attributes
     ATTR_NAME_JSONPATH = "filename"
@@ -73,7 +73,7 @@ class DataverseDataset(DatasetDownloader):
 class DataDryadDataset(DatasetDownloader):
     """Downloader for DataDryad repository."""
 
-    REGEXP_ID = r"datadryad\.org[\:]*[43]{0,3}\/stash\/dataset\/doi:(?P<record_id>.*)"
+    REGEXP_ID = r"datadryad\.org[\:]*[43]{0,3}(\/stash)?\/dataset\/doi:(?P<record_id>.*)"
 
     # the base entry point of the REST API
     API_URL = "https://datadryad.org/api/v2"
